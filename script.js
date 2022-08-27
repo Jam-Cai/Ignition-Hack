@@ -47,7 +47,7 @@ if (navigator.mediaDevices) {
 
   }).catch((err) => {
     // Throw alert when the browser is unable to access the microphone.
-    alert("Oh no! Your browser cannot access your computer's microphone.");
+    alert("Your browser cannot access your computer's microphone. Try reconnecting or troubleshooting your microphone");
   });
 } else {
   // Throw alert when the browser cannot access any media devices.
