@@ -1,3 +1,5 @@
+import $ from 'jquery'
+
 // Set up the AudioContext.
 const audioCtx = new AudioContext();
 
