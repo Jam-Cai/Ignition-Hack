@@ -1,5 +1,32 @@
 import $ from 'jquery'
 
+
+const graphNode = document.getElementById("graph")
+
+const renderGraph = (canvasNode, startX, endX, startY, endY, data) => {
+    const ctx = canvasNode.getContext("2d")
+    const width = canvasNode.width
+    const height = canvasNode.height
+
+    const shiftedData = data.map(([x, y]) => [
+        width * (x - startX) / (endX - startX),
+        height - height * (y - startY) / (endY - startY),
+    ])
+
+    let last = shiftedData[0]
+
+    shiftedData.forEach(([x, y]) => {
+        ctx.beginPath()
+        ctx.moveTo(last[0], last[1])
+        ctx.lineTo(x, y)
+        ctx.stroke()
+        last = [x, y]
+    })
+}
+
+renderGraph(graphNode, 0, 1, 0, 1, [[0, 0], [0.5, 0.25], [1, 1]])
+
+
 // Set up the AudioContext.
 const audioCtx = new AudioContext();
 
