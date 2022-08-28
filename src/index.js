@@ -1,3 +1,22 @@
+import DecibelMeter from 'decibel-meter'
+
+const decibelOutputNode = document.getElementById("decibel-output")
+
+let locked = false
+
+const meter = new DecibelMeter
+meter.sources.then(console.log)
+meter.listenTo(0, db => {
+    if (!locked) {
+        decibelOutputNode.innerHTML = db + 130
+        locked = true
+        setTimeout(_ => locked = false, 100)
+    }
+})
+
+
+
+
 const graphNode = document.getElementById("graph")
 
 const renderGraph = (canvasNode, startX, endX, startY, endY, data) => {
