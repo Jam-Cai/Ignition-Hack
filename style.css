@@ -18,7 +18,7 @@ body {
     text-align: center;
     width: 20em;
     height: 2.5em;
-    font-size: 3em;
+    font-size: 2em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,8 +39,8 @@ body {
 
 .header {
     font-family: "Orbitron", sans-serif;
-    font-size: 2em;
-    padding: 1em;
+    font-size: 3em;
+    padding: 1rem;
     background-color: #ff914d;
     align-self: stretch;
     text-align: center;
