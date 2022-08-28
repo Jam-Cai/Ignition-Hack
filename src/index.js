@@ -3,10 +3,12 @@ import DecibelMeter from 'decibel-meter'
 const decibelOutputNode = document.getElementById("decibel-output")
 const dialNode = document.getElementById("dial")
 const warningNode = document.getElementById("warning-output")
+const warningContainerNode = document.getElementById("warning-output-container")
 
 const renderDial = (canvasNode, min, max, value) => {
 
     const ctx = canvasNode.getContext("2d")
+    ctx.lineWidth = 3
     const width = canvasNode.width
     const height = canvasNode.height
     const radius = Math.min(width, 2 * height) / 2
@@ -39,7 +41,7 @@ meter.listenTo(0, db => {
         warning = true
         setTimeout(_ => {
             warning = false
-        }, 1000)
+        }, 3000)
     }
 
     if (!lock_updates) {
@@ -54,12 +56,12 @@ meter.listenTo(0, db => {
 const renderWarning = (warningNode, warning) => {
     if (warning) {
         warningNode.innerHTML = "Your environment is currently too loud. Consider leaving the area or putting on ear protection"
-        warningNode.classList.remove("okay")
-        warningNode.classList.add("warning")
+        warningContainerNode.classList.remove("okay")
+        warningContainerNode.classList.add("warning")
     } else {
         warningNode.innerHTML = "Your environment is at a safe volume"
-        warningNode.classList.remove("warning")
-        warningNode.classList.add("okay")
+        warningContainerNode.classList.remove("warning")
+        warningContainerNode.classList.add("okay")
     }
 }
 
